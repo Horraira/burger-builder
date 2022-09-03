@@ -1,21 +1,25 @@
 import React from "react";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import "./Header.css";
+import Logo from "../../assets/logo.png";
 
 const Header = () => {
   return (
-    <div>
+    <div className="Navigation">
       <Navbar
         style={{
           backgroundColor: "#D70F64",
           height: "70px",
         }}
       >
-        <NavbarBrand href="/" className="mr-auto">
-          Brand
+        <NavbarBrand href="/" className="mr-auto ml-md-5 Brand">
+          <img src={Logo} alt="Logo" width="80px"></img>
         </NavbarBrand>
-        <Nav>
+        <Nav className="mr-md-5">
           <NavItem>
-            <NavLink href="#">Something</NavLink>
+            <NavLink className="NavLink" href="#">
+              Something
+            </NavLink>
           </NavItem>
         </Nav>
       </Navbar>

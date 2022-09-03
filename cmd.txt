@@ -1,0 +1,8 @@
+Create React app :
+    npx create-react-app project
+
+Install Design Tools :
+    npm install bootstrap reactstrap react-popper --save
+
+    and import "bootstrap/dist/css/bootstrap.min.css"; to index.js file
+

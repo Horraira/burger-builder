@@ -20,13 +20,17 @@ const BuildControl = (props) => {
       >
         {props.label}
       </div>
-      <button className="btn btn-danger btn-sm m-1">Less</button>
-      <button className="btn btn-success btn-sm m-1">More</button>
+      <button className="btn btn-danger btn-sm m-1" onClick={props.removed}>
+        Less
+      </button>
+      <button className="btn btn-success btn-sm m-1" onClick={props.added}>
+        More
+      </button>
     </div>
   );
 };
 
-const Controls = () => {
+const Controls = (props) => {
   return (
     <div className="container ml-md-5" style={{ textAlign: "center" }}>
       <Card
@@ -42,6 +46,8 @@ const Controls = () => {
                 label={item.label}
                 type={item.type}
                 key={Math.random()}
+                added={() => props.ingredientAdded(item.type)}
+                removed={() => props.ingredientremoved(item.type)}
               />
             );
           })}

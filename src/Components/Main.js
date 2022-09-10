@@ -15,7 +15,10 @@ const Main = () => {
       <div className="container">
         <Routes>
           <Route path="/orders" element={<Orders />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={<Checkout navigate={navigation} />}
+          />
           <Route path="/" element={<BurgerBuilder navigate={navigation} />} />
         </Routes>
       </div>

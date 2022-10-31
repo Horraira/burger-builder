@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 import Orders from "./Orders/Orders";
 import Checkout from "./Orders/Checkout/Checkout";
+import Auth from "./Auth/Auth";
 
 import { Route, Routes } from "react-router";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +20,7 @@ const Main = () => {
             path="/checkout"
             element={<Checkout navigate={navigation} />}
           />
+          <Route path="login" element={<Auth />}></Route>
           <Route path="/" element={<BurgerBuilder navigate={navigation} />} />
         </Routes>
       </div>

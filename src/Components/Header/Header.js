@@ -27,6 +27,11 @@ const Header = () => {
               Orders
             </Link>
           </NavItem>
+          <NavItem>
+            <Link to="/login" className="NavLink">
+              Login
+            </Link>
+          </NavItem>
         </Nav>
       </Navbar>
     </div>

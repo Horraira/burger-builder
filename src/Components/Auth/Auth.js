@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
+import { auth } from "../../redux/authActionCreators";
+import { connect } from "react-redux";
 
-export default class Auth extends Component {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    auth: (email, password, mode) => dispatch(auth(email, password, mode)),
+  };
+};
+
+class Auth extends Component {
   state = {
     mode: "Sign Up",
   };
@@ -17,7 +25,7 @@ export default class Auth extends Component {
         <Formik
           initialValues={{ email: "", password: "", passwordConfirm: "" }}
           onSubmit={(values) => {
-            console.log(values);
+            this.props.auth(values.email, values.password, this.state.mode);
           }}
           validate={(values) => {
             const errors = {};
@@ -119,3 +127,5 @@ export default class Auth extends Component {
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(Auth);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header/Header";
 import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 import Orders from "./Orders/Orders";
@@ -8,6 +8,7 @@ import Auth from "./Auth/Auth";
 import { Route, Routes } from "react-router";
 import { useNavigate, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { authCheck } from "../redux/authActionCreators";
 
 const mapStateToProps = (state) => {
   return {
@@ -15,7 +16,16 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    authCheck: () => dispatch(authCheck()),
+  };
+};
+
 const Main = (props) => {
+  useEffect(() => {
+    props.authCheck();
+  }, []);
   const navigation = useNavigate();
   let routes = null;
   if (props.token === null) {
@@ -44,4 +54,4 @@ const Main = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

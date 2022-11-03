@@ -4,6 +4,7 @@ import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 import Orders from "./Orders/Orders";
 import Checkout from "./Orders/Checkout/Checkout";
 import Auth from "./Auth/Auth";
+import Logout from "./Auth/Logout";
 
 import { Route, Routes } from "react-router";
 import { useNavigate, Navigate } from "react-router-dom";
@@ -39,7 +40,10 @@ const Main = (props) => {
     routes = (
       <Routes>
         <Route path="/orders" element={<Orders />} />
+
         <Route path="/checkout" element={<Checkout navigate={navigation} />} />
+
+        <Route path="/logout" element={<Logout />} />
 
         <Route path="/" element={<BurgerBuilder navigate={navigation} />} />
         <Route path="*" element={<Navigate to="/" replace />} />

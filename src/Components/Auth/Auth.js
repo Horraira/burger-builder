@@ -2,10 +2,17 @@ import React, { Component } from "react";
 import { Formik } from "formik";
 import { auth } from "../../redux/authActionCreators";
 import { connect } from "react-redux";
-
+import Spiner from "../Spiner/Spiner";
 const mapDispatchToProps = (dispatch) => {
   return {
     auth: (email, password, mode) => dispatch(auth(email, password, mode)),
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    authLoading: state.authLoading,
+    authFailedMsg: state.authFailedMsg,
   };
 };
 
@@ -20,8 +27,11 @@ class Auth extends Component {
     });
   };
   render() {
-    return (
-      <div>
+    let form = null;
+    if (this.props.authLoading) {
+      form = <Spiner />;
+    } else {
+      form = (
         <Formik
           initialValues={{ email: "", password: "", passwordConfirm: "" }}
           onSubmit={(values) => {
@@ -123,9 +133,10 @@ class Auth extends Component {
             </div>
           )}
         </Formik>
-      </div>
-    );
+      );
+    }
+    return <div>{form}</div>;
   }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
